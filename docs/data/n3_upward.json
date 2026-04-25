@@ -1,0 +1,140 @@
+{
+  "n": 3,
+  "source_file": "C:\\Users\\User\\Desktop\\upward_planar_project\\data\\otypes03.b08",
+  "bits": 8,
+  "cycle": false,
+  "algorithm": "Brute Force on Samll Order Types",
+  "path_model": "undirected plane paths, one representative up to reversal",
+  "num_sets": 1,
+  "sets": [
+    {
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          69,
+          255
+        ],
+        [
+          255,
+          69
+        ]
+      ],
+      "num_plane_undirected_paths": 3,
+      "total_upward_orientations": 12,
+      "plane_paths": [
+        {
+          "path_id": 1,
+          "order_id": 1,
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "--",
+              "up_direction_angle": 3.402161725331852,
+              "rotation_angle": 4.451819908642631
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+",
+              "up_direction_angle": 4.9729580521267485,
+              "rotation_angle": 2.8810235818477343
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "++",
+              "up_direction_angle": 0.2605690717420597,
+              "rotation_angle": 1.3102272550528369
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+-",
+              "up_direction_angle": 1.8313653985369562,
+              "rotation_angle": 6.0226162354375266
+            }
+          ]
+        },
+        {
+          "path_id": 2,
+          "order_id": 2,
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-+",
+              "up_direction_angle": 2.8810235818477343,
+              "rotation_angle": 4.9729580521267485
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "--",
+              "up_direction_angle": 4.451819908642631,
+              "rotation_angle": 3.402161725331852
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+-",
+              "up_direction_angle": 6.022616235437527,
+              "rotation_angle": 1.8313653985369553
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "++",
+              "up_direction_angle": 1.3102272550528369,
+              "rotation_angle": 0.2605690717420597
+            }
+          ]
+        },
+        {
+          "path_id": 3,
+          "order_id": 3,
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "--",
+              "up_direction_angle": 2.356194490192345,
+              "rotation_angle": 5.497787143782138
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "+-",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "++",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "-+",
+              "up_direction_angle": 0.7853981633974483,
+              "rotation_angle": 0.7853981633974483
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

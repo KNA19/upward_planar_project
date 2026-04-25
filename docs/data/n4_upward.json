@@ -1,0 +1,945 @@
+{
+  "n": 4,
+  "source_file": "C:\\Users\\User\\Desktop\\upward_planar_project\\data\\otypes04.b08",
+  "bits": 8,
+  "cycle": false,
+  "algorithm": "Brute Force on Samll Order Types",
+  "path_model": "undirected plane paths, one representative up to reversal",
+  "num_sets": 2,
+  "sets": [
+    {
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "num_plane_undirected_paths": 8,
+      "total_upward_orientations": 32,
+      "plane_paths": [
+        {
+          "path_id": 1,
+          "order_id": 1,
+          "order": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "+--",
+              "up_direction_angle": 2.356194490192345,
+              "rotation_angle": 5.497787143782138
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "--+",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "-++",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "++-",
+              "up_direction_angle": 0.7853981633974483,
+              "rotation_angle": 0.7853981633974483
+            }
+          ]
+        },
+        {
+          "path_id": 2,
+          "order_id": 2,
+          "order": [
+            0,
+            1,
+            3,
+            2
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "---",
+              "up_direction_angle": 3.5323232415220382,
+              "rotation_angle": 4.321658392452445
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+-",
+              "up_direction_angle": 5.103119568316934,
+              "rotation_angle": 2.7508620656575484
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+++",
+              "up_direction_angle": 0.3907305879322456,
+              "rotation_angle": 1.180065738862651
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+-+",
+              "up_direction_angle": 1.9615269147271421,
+              "rotation_angle": 5.892454719247341
+            }
+          ]
+        },
+        {
+          "path_id": 3,
+          "order_id": 5,
+          "order": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-+-",
+              "up_direction_angle": 2.7508620656575475,
+              "rotation_angle": 5.103119568316935
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "---",
+              "up_direction_angle": 4.321658392452444,
+              "rotation_angle": 3.5323232415220387
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+-+",
+              "up_direction_angle": 5.892454719247341,
+              "rotation_angle": 1.9615269147271421
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+++",
+              "up_direction_angle": 1.180065738862651,
+              "rotation_angle": 0.3907305879322456
+            }
+          ]
+        },
+        {
+          "path_id": 4,
+          "order_id": 6,
+          "order": [
+            0,
+            3,
+            2,
+            1
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-++",
+              "up_direction_angle": 2.3561944901923444,
+              "rotation_angle": 5.497787143782139
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "--+",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+--",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "++-",
+              "up_direction_angle": 0.7853981633974474,
+              "rotation_angle": 0.7853981633974492
+            }
+          ]
+        },
+        {
+          "path_id": 5,
+          "order_id": 7,
+          "order": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "---",
+              "up_direction_angle": 2.7469250781245904,
+              "rotation_angle": 5.107056555849892
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "+-+",
+              "up_direction_angle": 4.317721404919487,
+              "rotation_angle": 3.536260229054996
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+++",
+              "up_direction_angle": 5.8885177317143835,
+              "rotation_angle": 1.9654639022600993
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "-+-",
+              "up_direction_angle": 1.1761287513296939,
+              "rotation_angle": 0.3946675754652027
+            }
+          ]
+        },
+        {
+          "path_id": 6,
+          "order_id": 8,
+          "order": [
+            1,
+            0,
+            3,
+            2
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "--+",
+              "up_direction_angle": 2.356194490192345,
+              "rotation_angle": 5.497787143782138
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "+--",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "++-",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "-++",
+              "up_direction_angle": 0.7853981633974483,
+              "rotation_angle": 0.7853981633974483
+            }
+          ]
+        },
+        {
+          "path_id": 7,
+          "order_id": 9,
+          "order": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "---",
+              "up_direction_angle": 1.9654639022600993,
+              "rotation_angle": 5.8885177317143835
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+-",
+              "up_direction_angle": 3.536260229054996,
+              "rotation_angle": 4.317721404919487
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+++",
+              "up_direction_angle": 5.107056555849892,
+              "rotation_angle": 2.7469250781245904
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+-+",
+              "up_direction_angle": 0.3946675754652027,
+              "rotation_angle": 1.1761287513296939
+            }
+          ]
+        },
+        {
+          "path_id": 8,
+          "order_id": 12,
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "upward_count": 4,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "+--",
+              "up_direction_angle": 2.3561944901923444,
+              "rotation_angle": 5.497787143782139
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "++-",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "-++",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "--+",
+              "up_direction_angle": 0.7853981633974474,
+              "rotation_angle": 0.7853981633974492
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "set_id": 1,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          69,
+          255
+        ],
+        [
+          108,
+          108
+        ],
+        [
+          255,
+          69
+        ]
+      ],
+      "num_plane_undirected_paths": 12,
+      "total_upward_orientations": 72,
+      "plane_paths": [
+        {
+          "path_id": 1,
+          "order_id": 1,
+          "order": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "---",
+              "up_direction_angle": 3.1391285158334705,
+              "rotation_angle": 4.714853118141012
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+-",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "-++",
+              "up_direction_angle": 5.235991261625131,
+              "rotation_angle": 2.617990372349352
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+++",
+              "up_direction_angle": 6.280721169423264,
+              "rotation_angle": 1.5732604645512192
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+-+",
+              "up_direction_angle": 0.7853981633974483,
+              "rotation_angle": 0.7853981633974483
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "+--",
+              "up_direction_angle": 2.0943986080353376,
+              "rotation_angle": 5.759583025939145
+            }
+          ]
+        },
+        {
+          "path_id": 2,
+          "order_id": 2,
+          "order": [
+            0,
+            1,
+            3,
+            2
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "--+",
+              "up_direction_angle": 3.402161725331852,
+              "rotation_angle": 4.451819908642631
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-++",
+              "up_direction_angle": 4.190024026485623,
+              "rotation_angle": 3.66395760748886
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "-+-",
+              "up_direction_angle": 5.235991261625131,
+              "rotation_angle": 2.617990372349352
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "++-",
+              "up_direction_angle": 0.2605690717420597,
+              "rotation_angle": 1.3102272550528369
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+--",
+              "up_direction_angle": 1.0484313728958305,
+              "rotation_angle": 0.522364953899066
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "+-+",
+              "up_direction_angle": 2.0943986080353376,
+              "rotation_angle": 5.759583025939145
+            }
+          ]
+        },
+        {
+          "path_id": 3,
+          "order_id": 3,
+          "order": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-+-",
+              "up_direction_angle": 2.8785594440914113,
+              "rotation_angle": 4.975422189883071
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "---",
+              "up_direction_angle": 3.663957607488859,
+              "rotation_angle": 4.190024026485624
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "--+",
+              "up_direction_angle": 4.71238898038469,
+              "rotation_angle": 3.141592653589793
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+-+",
+              "up_direction_angle": 6.020152097681205,
+              "rotation_angle": 1.833829536293278
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+++",
+              "up_direction_angle": 0.522364953899066,
+              "rotation_angle": 1.0484313728958305
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "++-",
+              "up_direction_angle": 1.5707963267948966,
+              "rotation_angle": 0.0
+            }
+          ]
+        },
+        {
+          "path_id": 4,
+          "order_id": 4,
+          "order": [
+            0,
+            2,
+            3,
+            1
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "--+",
+              "up_direction_angle": 3.141592653589793,
+              "rotation_angle": 4.71238898038469
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "---",
+              "up_direction_angle": 4.190024026485624,
+              "rotation_angle": 3.663957607488859
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "-+-",
+              "up_direction_angle": 4.975422189883071,
+              "rotation_angle": 2.8785594440914117
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "++-",
+              "up_direction_angle": 0.0,
+              "rotation_angle": 1.5707963267948966
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+++",
+              "up_direction_angle": 1.0484313728958305,
+              "rotation_angle": 0.522364953899066
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "+-+",
+              "up_direction_angle": 1.833829536293278,
+              "rotation_angle": 6.020152097681205
+            }
+          ]
+        },
+        {
+          "path_id": 5,
+          "order_id": 5,
+          "order": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-+-",
+              "up_direction_angle": 2.617990372349352,
+              "rotation_angle": 5.235991261625131
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-++",
+              "up_direction_angle": 3.6639576074888596,
+              "rotation_angle": 4.190024026485624
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "--+",
+              "up_direction_angle": 4.451819908642631,
+              "rotation_angle": 3.402161725331852
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+-+",
+              "up_direction_angle": 5.759583025939145,
+              "rotation_angle": 2.0943986080353376
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+--",
+              "up_direction_angle": 0.522364953899066,
+              "rotation_angle": 1.0484313728958305
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "++-",
+              "up_direction_angle": 1.3102272550528369,
+              "rotation_angle": 0.2605690717420597
+            }
+          ]
+        },
+        {
+          "path_id": 6,
+          "order_id": 6,
+          "order": [
+            0,
+            3,
+            2,
+            1
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-++",
+              "up_direction_angle": 2.617990372349352,
+              "rotation_angle": 5.235991261625131
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+-",
+              "up_direction_angle": 3.9269908169872414,
+              "rotation_angle": 3.9269908169872414
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "---",
+              "up_direction_angle": 4.714853118141012,
+              "rotation_angle": 3.1391285158334705
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+--",
+              "up_direction_angle": 5.759583025939145,
+              "rotation_angle": 2.0943986080353376
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+-+",
+              "up_direction_angle": 0.7853981633974483,
+              "rotation_angle": 0.7853981633974483
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "+++",
+              "up_direction_angle": 1.5732604645512192,
+              "rotation_angle": 6.280721169423264
+            }
+          ]
+        },
+        {
+          "path_id": 7,
+          "order_id": 7,
+          "order": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "---",
+              "up_direction_angle": 2.616763561934404,
+              "rotation_angle": 5.237218072040079
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "+--",
+              "up_direction_angle": 3.665194934830234,
+              "rotation_angle": 4.188786699144249
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+-+",
+              "up_direction_angle": 4.975422189883071,
+              "rotation_angle": 2.8785594440914117
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+++",
+              "up_direction_angle": 5.758356215524197,
+              "rotation_angle": 2.095625418450286
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "-++",
+              "up_direction_angle": 0.5236022812404411,
+              "rotation_angle": 1.0471940455544555
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "-+-",
+              "up_direction_angle": 1.833829536293278,
+              "rotation_angle": 6.020152097681205
+            }
+          ]
+        },
+        {
+          "path_id": 8,
+          "order_id": 8,
+          "order": [
+            1,
+            0,
+            3,
+            2
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "--+",
+              "up_direction_angle": 2.356194490192345,
+              "rotation_angle": 5.497787143782138
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "+-+",
+              "up_direction_angle": 3.665194934830234,
+              "rotation_angle": 4.188786699144249
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+--",
+              "up_direction_angle": 4.714853118141012,
+              "rotation_angle": 3.1391285158334705
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "++-",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "-+-",
+              "up_direction_angle": 0.5236022812404411,
+              "rotation_angle": 1.0471940455544555
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "-++",
+              "up_direction_angle": 1.5732604645512192,
+              "rotation_angle": 6.280721169423264
+            }
+          ]
+        },
+        {
+          "path_id": 9,
+          "order_id": 9,
+          "order": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "---",
+              "up_direction_angle": 2.0956254184502856,
+              "rotation_angle": 5.758356215524197
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+-",
+              "up_direction_angle": 2.8785594440914113,
+              "rotation_angle": 4.975422189883071
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "++-",
+              "up_direction_angle": 4.188786699144249,
+              "rotation_angle": 3.665194934830234
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+++",
+              "up_direction_angle": 5.237218072040079,
+              "rotation_angle": 2.6167635619344036
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+-+",
+              "up_direction_angle": 6.020152097681205,
+              "rotation_angle": 1.833829536293278
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "--+",
+              "up_direction_angle": 1.0471940455544555,
+              "rotation_angle": 0.5236022812404411
+            }
+          ]
+        },
+        {
+          "path_id": 10,
+          "order_id": 10,
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "-++",
+              "up_direction_angle": 2.0956254184502856,
+              "rotation_angle": 5.758356215524197
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "-+-",
+              "up_direction_angle": 3.1415926535897927,
+              "rotation_angle": 4.71238898038469
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "++-",
+              "up_direction_angle": 4.45181990864263,
+              "rotation_angle": 3.402161725331853
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "+--",
+              "up_direction_angle": 5.237218072040079,
+              "rotation_angle": 2.6167635619344036
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "+-+",
+              "up_direction_angle": 0.0,
+              "rotation_angle": 1.5707963267948966
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "--+",
+              "up_direction_angle": 1.3102272550528369,
+              "rotation_angle": 0.2605690717420597
+            }
+          ]
+        },
+        {
+          "path_id": 11,
+          "order_id": 11,
+          "order": [
+            2,
+            0,
+            1,
+            3
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "++-",
+              "up_direction_angle": 2.616763561934404,
+              "rotation_angle": 5.237218072040079
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "+--",
+              "up_direction_angle": 3.402161725331852,
+              "rotation_angle": 4.451819908642631
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "+-+",
+              "up_direction_angle": 4.71238898038469,
+              "rotation_angle": 3.141592653589793
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "--+",
+              "up_direction_angle": 5.758356215524197,
+              "rotation_angle": 2.095625418450286
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "-++",
+              "up_direction_angle": 0.2605690717420597,
+              "rotation_angle": 1.3102272550528369
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "-+-",
+              "up_direction_angle": 1.5707963267948966,
+              "rotation_angle": 0.0
+            }
+          ]
+        },
+        {
+          "path_id": 12,
+          "order_id": 12,
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "upward_count": 6,
+          "upward_orientations": [
+            {
+              "orientation_id": 1,
+              "dirs": "+--",
+              "up_direction_angle": 2.356194490192345,
+              "rotation_angle": 5.497787143782138
+            },
+            {
+              "orientation_id": 2,
+              "dirs": "++-",
+              "up_direction_angle": 3.1391285158334705,
+              "rotation_angle": 4.714853118141012
+            },
+            {
+              "orientation_id": 3,
+              "dirs": "-+-",
+              "up_direction_angle": 4.188786699144249,
+              "rotation_angle": 3.665194934830234
+            },
+            {
+              "orientation_id": 4,
+              "dirs": "-++",
+              "up_direction_angle": 5.497787143782138,
+              "rotation_angle": 2.356194490192345
+            },
+            {
+              "orientation_id": 5,
+              "dirs": "--+",
+              "up_direction_angle": 6.280721169423264,
+              "rotation_angle": 1.5732604645512192
+            },
+            {
+              "orientation_id": 6,
+              "dirs": "+-+",
+              "up_direction_angle": 1.0471940455544555,
+              "rotation_angle": 0.5236022812404411
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

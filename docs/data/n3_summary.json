@@ -1,0 +1,19 @@
+{
+  "n": 3,
+  "status": "complete",
+  "source_dataset_file": "n3_upward.json",
+  "source_dataset_size_mb": 0.004,
+  "num_sets": 1,
+  "cycle": false,
+  "algorithm": "Brute Force on Samll Order Types",
+  "path_model": "undirected plane paths, one representative up to reversal",
+  "total_plane_undirected_paths": 3,
+  "total_upward_orientations": 12,
+  "sets": [
+    {
+      "set_id": 0,
+      "num_plane_undirected_paths": 3,
+      "total_upward_orientations": 12
+    }
+  ]
+}

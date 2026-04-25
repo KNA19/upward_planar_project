@@ -1,0 +1,94 @@
+{
+  "n": 6,
+  "status": "complete",
+  "source_dataset_file": "n6_upward.json",
+  "source_dataset_size_mb": 5.07,
+  "num_sets": 16,
+  "cycle": false,
+  "algorithm": "Brute Force on Samll Order Types",
+  "path_model": "undirected plane paths, one representative up to reversal",
+  "total_plane_undirected_paths": 2251,
+  "total_upward_orientations": 22510,
+  "sets": [
+    {
+      "set_id": 0,
+      "num_plane_undirected_paths": 48,
+      "total_upward_orientations": 480
+    },
+    {
+      "set_id": 1,
+      "num_plane_undirected_paths": 80,
+      "total_upward_orientations": 800
+    },
+    {
+      "set_id": 2,
+      "num_plane_undirected_paths": 80,
+      "total_upward_orientations": 800
+    },
+    {
+      "set_id": 3,
+      "num_plane_undirected_paths": 126,
+      "total_upward_orientations": 1260
+    },
+    {
+      "set_id": 4,
+      "num_plane_undirected_paths": 134,
+      "total_upward_orientations": 1340
+    },
+    {
+      "set_id": 5,
+      "num_plane_undirected_paths": 124,
+      "total_upward_orientations": 1240
+    },
+    {
+      "set_id": 6,
+      "num_plane_undirected_paths": 132,
+      "total_upward_orientations": 1320
+    },
+    {
+      "set_id": 7,
+      "num_plane_undirected_paths": 80,
+      "total_upward_orientations": 800
+    },
+    {
+      "set_id": 8,
+      "num_plane_undirected_paths": 134,
+      "total_upward_orientations": 1340
+    },
+    {
+      "set_id": 9,
+      "num_plane_undirected_paths": 130,
+      "total_upward_orientations": 1300
+    },
+    {
+      "set_id": 10,
+      "num_plane_undirected_paths": 180,
+      "total_upward_orientations": 1800
+    },
+    {
+      "set_id": 11,
+      "num_plane_undirected_paths": 202,
+      "total_upward_orientations": 2020
+    },
+    {
+      "set_id": 12,
+      "num_plane_undirected_paths": 202,
+      "total_upward_orientations": 2020
+    },
+    {
+      "set_id": 13,
+      "num_plane_undirected_paths": 191,
+      "total_upward_orientations": 1910
+    },
+    {
+      "set_id": 14,
+      "num_plane_undirected_paths": 228,
+      "total_upward_orientations": 2280
+    },
+    {
+      "set_id": 15,
+      "num_plane_undirected_paths": 180,
+      "total_upward_orientations": 1800
+    }
+  ]
+}
