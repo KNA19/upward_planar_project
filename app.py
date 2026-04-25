@@ -424,9 +424,9 @@ col5.metric(
     int(selected_set.get("total_upward_orientations", 0)),
 )
 
-st.caption(f"Algorithm: {dataset.get('algorithm', '')}")
-st.caption(f"Path model: {dataset.get('path_model', '')}")
-st.caption(f"Source file: {dataset.get('source_file', '')}")
+# st.caption(f"Algorithm: {dataset.get('algorithm', '')}")
+# st.caption(f"Path model: {dataset.get('path_model', '')}")
+# st.caption(f"Source file: {dataset.get('source_file', '')}")
 
 st.divider()
 

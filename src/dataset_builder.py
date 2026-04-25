@@ -44,7 +44,7 @@ def build_upward_dataset(
         "source_file": str(actual_path),
         "bits": actual_bits,
         "cycle": cycle,
-        "algorithm": "Chapter 6 improved brute force",
+        "algorithm": "Brute Force on Samll Order Types",
         "path_model": "undirected plane paths, one representative up to reversal",
         "num_sets": 0,
         "sets": [],
