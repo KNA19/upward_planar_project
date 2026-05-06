@@ -468,7 +468,7 @@ with left_col:
             }
         )
 
-    st.dataframe(path_rows, use_container_width=True, hide_index=True)
+    st.dataframe(path_rows, width="stretch", hide_index=True)
 
     if selected_orientation is not None:
         st.write("**Orientations for selected plane path**")
@@ -489,7 +489,7 @@ with left_col:
                 }
             )
 
-        st.dataframe(orientation_rows, use_container_width=True, hide_index=True)
+        st.dataframe(orientation_rows, width="stretch", hide_index=True)
 
 
 # =========================================================
@@ -569,4 +569,4 @@ else:
         for orientation_record in upward_orientations
     ]
 
-    st.dataframe(all_orientation_rows, use_container_width=True, hide_index=True)
+    st.dataframe(all_orientation_rows, width="stretch", hide_index=True)
