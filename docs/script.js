@@ -1,19 +1,9 @@
 "use strict";
 
-// =========================================================
-// Global state
-// =========================================================
-
 const datasetCache = new Map();
 
 let currentDataset = null;
-let currentSet = null;
-let currentPath = null;
-let currentOrientation = null;
-
-// =========================================================
-// DOM helpers
-// =========================================================
+let currentWitness = null;
 
 function $(id) {
   return document.getElementById(id);
@@ -37,10 +27,6 @@ function addOption(selectEl, value, label) {
   selectEl.appendChild(option);
 }
 
-// =========================================================
-// Data loading
-// =========================================================
-
 async function loadDataset(n) {
   const key = String(n);
 
@@ -48,8 +34,7 @@ async function loadDataset(n) {
     return datasetCache.get(key);
   }
 
-  const url = `data/n${n}_upward.json`;
-
+  const url = `data/n${n}_witness.json`;
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -57,106 +42,35 @@ async function loadDataset(n) {
   }
 
   const dataset = await response.json();
-
   datasetCache.set(key, dataset);
 
   return dataset;
 }
 
-// =========================================================
-// Selection population
-// =========================================================
+function populateWitnessSelect(dataset) {
+  const witnessSelect = $("witnessSelect");
+  clearSelect(witnessSelect);
 
-function populateSetSelect(dataset) {
-  const setSelect = $("setSelect");
-  clearSelect(setSelect);
+  const witnesses = Array.isArray(dataset.witnesses) ? dataset.witnesses : [];
 
-  dataset.sets.forEach((setRecord) => {
-    const setId = Number(setRecord.set_id);
-    const numPaths = Number(
-      setRecord.num_plane_undirected_paths ?? setRecord.plane_paths?.length ?? 0
-    );
-    const upwardTotal = Number(setRecord.total_upward_orientations ?? 0);
+  witnesses.forEach((witness, index) => {
+    const order = Array.isArray(witness.order) ? witness.order : [];
 
     addOption(
-      setSelect,
-      String(setId),
-      `Set ${setId} | plane paths=${numPaths} | upward orientations=${upwardTotal}`
+      witnessSelect,
+      String(index),
+      `${witness.orientation_id}: dirs=${witness.dirs}, set=${witness.set_id}, order=(${order.join(", ")})`
     );
   });
 }
-
-function populatePathSelect(setRecord) {
-  const pathSelect = $("pathSelect");
-  clearSelect(pathSelect);
-
-  const planePaths = setRecord.plane_paths ?? [];
-
-  planePaths.forEach((pathRecord) => {
-    const pathId = Number(pathRecord.path_id);
-    const upwardCount = Number(pathRecord.upward_count ?? 0);
-    const order = pathRecord.order ?? [];
-
-    addOption(
-      pathSelect,
-      String(pathId),
-      `Path ${pathId} | upward=${upwardCount} | order=(${order.join(", ")})`
-    );
-  });
-}
-
-function populateOrientationSelect(pathRecord) {
-  const orientationSelect = $("orientationSelect");
-  clearSelect(orientationSelect);
-
-  const orientations = pathRecord.upward_orientations ?? [];
-
-  orientations.forEach((orientationRecord) => {
-    const orientationId = Number(orientationRecord.orientation_id);
-    const dirs = orientationRecord.dirs ?? "";
-
-    addOption(
-      orientationSelect,
-      String(orientationId),
-      `Orientation ${orientationId} [${dirs}]`
-    );
-  });
-}
-
-// =========================================================
-// Lookup helpers
-// =========================================================
-
-function getSetById(dataset, setId) {
-  return dataset.sets.find((setRecord) => Number(setRecord.set_id) === Number(setId));
-}
-
-function getPathById(setRecord, pathId) {
-  return setRecord.plane_paths.find(
-    (pathRecord) => Number(pathRecord.path_id) === Number(pathId)
-  );
-}
-
-function getOrientationById(pathRecord, orientationId) {
-  return pathRecord.upward_orientations.find(
-    (orientationRecord) =>
-      Number(orientationRecord.orientation_id) === Number(orientationId)
-  );
-}
-
-// =========================================================
-// Geometry helpers
-// =========================================================
 
 function rotatePoints(points, angle) {
   if (!points || points.length === 0) {
     return [];
   }
 
-  const cx =
-    points.reduce((sum, p) => sum + Number(p[0]), 0) / points.length;
-  const cy =
-    points.reduce((sum, p) => sum + Number(p[1]), 0) / points.length;
+  const cx = points.reduce((sum, p) => sum + Number(p[0]), 0) / points.length;
+  const cy = points.reduce((sum, p) => sum + Number(p[1]), 0) / points.length;
 
   const cosA = Math.cos(angle);
   const sinA = Math.sin(angle);
@@ -165,43 +79,12 @@ function rotatePoints(points, angle) {
     const x = Number(p[0]) - cx;
     const y = Number(p[1]) - cy;
 
-    const xr = x * cosA - y * sinA;
-    const yr = x * sinA + y * cosA;
-
-    return [xr + cx, yr + cy];
+    return [
+      x * cosA - y * sinA + cx,
+      x * sinA + y * cosA + cy,
+    ];
   });
 }
-
-function computeDirectedEdges(order, dirs, cycle = false) {
-  const edges = [];
-
-  const expected = cycle ? order.length : Math.max(0, order.length - 1);
-
-  if (dirs.length !== expected) {
-    throw new Error(
-      `Direction string length mismatch: got ${dirs.length}, expected ${expected}`
-    );
-  }
-
-  for (let i = 0; i < dirs.length; i++) {
-    const u = Number(order[i]);
-    const v = Number(order[(i + 1) % order.length]);
-
-    if (dirs[i] === "+") {
-      edges.push([u, v]);
-    } else if (dirs[i] === "-") {
-      edges.push([v, u]);
-    } else {
-      throw new Error(`Invalid direction character: ${dirs[i]}`);
-    }
-  }
-
-  return edges;
-}
-
-// =========================================================
-// Canvas drawing helpers
-// =========================================================
 
 function getBounds(points) {
   const xs = points.map((p) => Number(p[0]));
@@ -217,17 +100,13 @@ function getBounds(points) {
 
 function makeTransform(points, canvasWidth, canvasHeight) {
   const bounds = getBounds(points);
-
   const padding = 55;
-
   const width = Math.max(bounds.maxX - bounds.minX, 1);
   const height = Math.max(bounds.maxY - bounds.minY, 1);
-
   const scale = Math.min(
     (canvasWidth - 2 * padding) / width,
     (canvasHeight - 2 * padding) / height
   );
-
   const centerX = (bounds.minX + bounds.maxX) / 2;
   const centerY = (bounds.minY + bounds.maxY) / 2;
 
@@ -235,16 +114,14 @@ function makeTransform(points, canvasWidth, canvasHeight) {
     const x = Number(point[0]);
     const y = Number(point[1]);
 
-    const screenX = canvasWidth / 2 + (x - centerX) * scale;
-
-    // Canvas y-axis points downward, so invert the mathematical y-axis.
-    const screenY = canvasHeight / 2 - (y - centerY) * scale;
-
-    return [screenX, screenY];
+    return [
+      canvasWidth / 2 + (x - centerX) * scale,
+      canvasHeight / 2 - (y - centerY) * scale,
+    ];
   };
 }
 
-function drawArrow(ctx, x1, y1, x2, y2, color = "#1f2937") {
+function drawArrow(ctx, x1, y1, x2, y2, color = "#111827") {
   const headLength = 12;
   const angle = Math.atan2(y2 - y1, x2 - x1);
 
@@ -275,16 +152,14 @@ function drawGrid(ctx, width, height) {
   ctx.strokeStyle = "#eef2f7";
   ctx.lineWidth = 1;
 
-  const step = 40;
-
-  for (let x = 0; x <= width; x += step) {
+  for (let x = 0; x <= width; x += 40) {
     ctx.beginPath();
     ctx.moveTo(x, 0);
     ctx.lineTo(x, height);
     ctx.stroke();
   }
 
-  for (let y = 0; y <= height; y += step) {
+  for (let y = 0; y <= height; y += 40) {
     ctx.beginPath();
     ctx.moveTo(0, y);
     ctx.lineTo(width, y);
@@ -298,19 +173,9 @@ function drawUpArrow(ctx, points, transform, angle, label) {
   }
 
   const bounds = getBounds(points);
-  const span = Math.max(
-    bounds.maxX - bounds.minX,
-    bounds.maxY - bounds.minY,
-    1
-  );
-
-  const start = [
-    bounds.minX + 0.12 * span,
-    bounds.minY + 0.12 * span,
-  ];
-
+  const span = Math.max(bounds.maxX - bounds.minX, bounds.maxY - bounds.minY, 1);
+  const start = [bounds.minX + 0.12 * span, bounds.minY + 0.12 * span];
   const length = 0.18 * span;
-
   const end = [
     start[0] + length * Math.cos(angle),
     start[1] + length * Math.sin(angle),
@@ -329,33 +194,23 @@ function drawUpArrow(ctx, points, transform, angle, label) {
 function drawEmbedding() {
   const canvas = $("embeddingCanvas");
   const ctx = canvas.getContext("2d");
-
   const width = canvas.width;
   const height = canvas.height;
 
   ctx.clearRect(0, 0, width, height);
-
   drawGrid(ctx, width, height);
 
-  if (!currentSet || !currentPath || !currentOrientation) {
+  if (!currentWitness) {
     ctx.fillStyle = "#64748b";
     ctx.font = "16px system-ui, sans-serif";
-    ctx.fillText("No embedding selected.", 32, 48);
+    ctx.fillText("No witness selected.", 32, 48);
     return;
   }
 
-  const originalPoints = currentSet.points;
-  const order = currentPath.order;
-  const dirs = currentOrientation.dirs;
-
   const displayMode = $("displayMode").value;
-
-  const rotationAngle = Number(currentOrientation.rotation_angle ?? 0);
-  const upDirectionAngle = Number(
-    currentOrientation.up_direction_angle ?? Math.PI / 2
-  );
-
-  const cycle = Boolean(currentDataset?.cycle ?? false);
+  const originalPoints = currentWitness.points;
+  const rotationAngle = Number(currentWitness.rotation_angle ?? 0);
+  const upDirectionAngle = Number(currentWitness.up_direction_angle ?? Math.PI / 2);
 
   let displayPoints;
   let displayedUpAngle;
@@ -373,51 +228,38 @@ function drawEmbedding() {
 
   const transform = makeTransform(displayPoints, width, height);
 
-  // Draw undirected polyline first.
   ctx.strokeStyle = "#94a3b8";
   ctx.lineWidth = 1.4;
   ctx.setLineDash([6, 5]);
 
-  ctx.beginPath();
+  const undirectedEdges = Array.isArray(currentWitness.undirected_edges)
+    ? currentWitness.undirected_edges
+    : [];
 
-  order.forEach((pointIndex, i) => {
-    const [x, y] = transform(displayPoints[Number(pointIndex)]);
+  for (const [u, v] of undirectedEdges) {
+    const [x1, y1] = transform(displayPoints[Number(u)]);
+    const [x2, y2] = transform(displayPoints[Number(v)]);
 
-    if (i === 0) {
-      ctx.moveTo(x, y);
-    } else {
-      ctx.lineTo(x, y);
-    }
-  });
-
-  if (cycle && order.length >= 2) {
-    const [x0, y0] = transform(displayPoints[Number(order[0])]);
-    ctx.lineTo(x0, y0);
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
   }
 
-  ctx.stroke();
   ctx.setLineDash([]);
 
-  // Draw directed edges.
-  const directedEdges = computeDirectedEdges(order, dirs, cycle);
+  const directedEdges = Array.isArray(currentWitness.directed_edges)
+    ? currentWitness.directed_edges
+    : [];
 
-  directedEdges.forEach(([tail, head], i) => {
-    const [x1, y1] = transform(displayPoints[tail]);
-    const [x2, y2] = transform(displayPoints[head]);
+  for (const [tail, head] of directedEdges) {
+    const [x1, y1] = transform(displayPoints[Number(tail)]);
+    const [x2, y2] = transform(displayPoints[Number(head)]);
+    drawArrow(ctx, x1, y1, x2, y2);
+  }
 
-    drawArrow(ctx, x1, y1, x2, y2, "#111827");
-
-    const mx = (x1 + x2) / 2;
-    const my = (y1 + y2) / 2;
-
-    ctx.fillStyle = "#334155";
-    ctx.font = "12px system-ui, sans-serif";
-    ctx.fillText(`e${i + 1}`, mx + 4, my - 4);
-  });
-
-  // Draw points and labels.
-  displayPoints.forEach((p, idx) => {
-    const [x, y] = transform(p);
+  displayPoints.forEach((point, index) => {
+    const [x, y] = transform(point);
 
     ctx.fillStyle = "#ffffff";
     ctx.strokeStyle = "#0f172a";
@@ -430,40 +272,29 @@ function drawEmbedding() {
 
     ctx.fillStyle = "#0f172a";
     ctx.font = "bold 12px system-ui, sans-serif";
-    ctx.fillText(String(idx), x + 8, y - 8);
+    ctx.fillText(String(index), x + 8, y - 8);
   });
 
   drawUpArrow(ctx, displayPoints, transform, displayedUpAngle, upLabel);
 }
 
-// =========================================================
-// Details panel
-// =========================================================
-
 function updateDetailsPanel() {
-  if (!currentPath || !currentOrientation) {
-    setText("orderOutput", "No path selected.");
-    setText("dirsOutput", "No orientation selected.");
-    setText("rotationOutput", "No orientation selected.");
-    setText("upDirectionOutput", "No orientation selected.");
+  if (!currentWitness) {
+    setText("orderOutput", "No witness selected.");
+    setText("dirsOutput", "No witness selected.");
+    setText("rotationOutput", "No witness selected.");
+    setText("upDirectionOutput", "No witness selected.");
     return;
   }
 
-  setText("orderOutput", JSON.stringify(currentPath.order));
-  setText("dirsOutput", currentOrientation.dirs);
-  setText(
-    "rotationOutput",
-    Number(currentOrientation.rotation_angle ?? 0).toFixed(8)
-  );
+  setText("orderOutput", JSON.stringify(currentWitness.order));
+  setText("dirsOutput", currentWitness.dirs);
+  setText("rotationOutput", Number(currentWitness.rotation_angle ?? 0).toFixed(8));
   setText(
     "upDirectionOutput",
-    Number(currentOrientation.up_direction_angle ?? 0).toFixed(8)
+    Number(currentWitness.up_direction_angle ?? 0).toFixed(8)
   );
 }
-
-// =========================================================
-// State update flow
-// =========================================================
 
 async function handleDatasetChange() {
   const n = $("nSelect").value;
@@ -475,89 +306,33 @@ async function handleDatasetChange() {
 
   currentDataset = await loadDataset(n);
 
-  if (!currentDataset.sets || !Array.isArray(currentDataset.sets)) {
-    throw new Error("Invalid dataset: missing sets array.");
+  if (!Array.isArray(currentDataset.witnesses)) {
+    throw new Error("Invalid witness dataset: missing witnesses array.");
   }
 
-  if (
-    currentDataset.sets.length > 0 &&
-    !("plane_paths" in currentDataset.sets[0])
-  ) {
-    throw new Error(
-      "This dataset uses the old JSON structure. Rebuild outputs using the updated dataset_builder.py."
-    );
-  }
-
-  populateSetSelect(currentDataset);
-
-  handleSetChange();
+  populateWitnessSelect(currentDataset);
+  handleWitnessChange();
 }
 
-function handleSetChange() {
-  const setId = $("setSelect").value;
-
-  currentSet = getSetById(currentDataset, setId);
-
-  populatePathSelect(currentSet);
-
-  handlePathChange();
-}
-
-function handlePathChange() {
-  const pathId = $("pathSelect").value;
-
-  currentPath = getPathById(currentSet, pathId);
-
-  populateOrientationSelect(currentPath);
-
-  handleOrientationChange();
-}
-
-function handleOrientationChange() {
-  const orientationId = $("orientationSelect").value;
-
-  if (!orientationId) {
-    currentOrientation = null;
-  } else {
-    currentOrientation = getOrientationById(currentPath, orientationId);
-  }
+function handleWitnessChange() {
+  const index = Number($("witnessSelect").value);
+  const witnesses = currentDataset && Array.isArray(currentDataset.witnesses)
+    ? currentDataset.witnesses
+    : [];
+  currentWitness = witnesses[index] || null;
 
   updateDetailsPanel();
   drawEmbedding();
 }
-
-function handleDisplayModeChange() {
-  drawEmbedding();
-}
-
-// =========================================================
-// Initialization
-// =========================================================
 
 async function init() {
   $("nSelect").addEventListener("change", () => {
     handleDatasetChange().catch(showError);
   });
 
-  $("setSelect").addEventListener("change", () => {
+  $("witnessSelect").addEventListener("change", () => {
     try {
-      handleSetChange();
-    } catch (err) {
-      showError(err);
-    }
-  });
-
-  $("pathSelect").addEventListener("change", () => {
-    try {
-      handlePathChange();
-    } catch (err) {
-      showError(err);
-    }
-  });
-
-  $("orientationSelect").addEventListener("change", () => {
-    try {
-      handleOrientationChange();
+      handleWitnessChange();
     } catch (err) {
       showError(err);
     }
@@ -565,7 +340,7 @@ async function init() {
 
   $("displayMode").addEventListener("change", () => {
     try {
-      handleDisplayModeChange();
+      drawEmbedding();
     } catch (err) {
       showError(err);
     }

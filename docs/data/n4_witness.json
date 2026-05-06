@@ -1,0 +1,517 @@
+{
+  "n": 4,
+  "bits": 8,
+  "cycle": false,
+  "dataset_type": "full orientation-witness dataset",
+  "orientation_model": "all binary edge-direction patterns of length n-1",
+  "upwardness_model": "upwardness under rotation of the coordinate system",
+  "total_required_orientations": 8,
+  "total_found_orientations": 8,
+  "complete": true,
+  "required_orientations": [
+    "+++",
+    "++-",
+    "+-+",
+    "+--",
+    "-++",
+    "-+-",
+    "--+",
+    "---"
+  ],
+  "missing_orientations": [],
+  "search_statistics": {
+    "sets_checked": 1,
+    "path_orders_checked": 2,
+    "plane_paths_checked": 2
+  },
+  "witnesses": [
+    {
+      "orientation_id": 1,
+      "dirs": "+++",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 2,
+      "order": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "directed_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "up_direction_angle": 0.3907305879322456,
+      "rotation_angle": 1.180065738862651,
+      "orientation_id_within_plane_path": 3
+    },
+    {
+      "orientation_id": 2,
+      "dirs": "++-",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 1,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "directed_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "up_direction_angle": 0.7853981633974483,
+      "rotation_angle": 0.7853981633974483,
+      "orientation_id_within_plane_path": 4
+    },
+    {
+      "orientation_id": 3,
+      "dirs": "+-+",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 2,
+      "order": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "directed_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "up_direction_angle": 1.9615269147271421,
+      "rotation_angle": 5.892454719247341,
+      "orientation_id_within_plane_path": 4
+    },
+    {
+      "orientation_id": 4,
+      "dirs": "+--",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 1,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "directed_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "up_direction_angle": 2.356194490192345,
+      "rotation_angle": 5.497787143782138,
+      "orientation_id_within_plane_path": 1
+    },
+    {
+      "orientation_id": 5,
+      "dirs": "-++",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 1,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "directed_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "up_direction_angle": 5.497787143782138,
+      "rotation_angle": 2.356194490192345,
+      "orientation_id_within_plane_path": 3
+    },
+    {
+      "orientation_id": 6,
+      "dirs": "-+-",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 2,
+      "order": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "directed_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "up_direction_angle": 5.103119568316934,
+      "rotation_angle": 2.7508620656575484,
+      "orientation_id_within_plane_path": 2
+    },
+    {
+      "orientation_id": 7,
+      "dirs": "--+",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 1,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "directed_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "up_direction_angle": 3.9269908169872414,
+      "rotation_angle": 3.9269908169872414,
+      "orientation_id_within_plane_path": 2
+    },
+    {
+      "orientation_id": 8,
+      "dirs": "---",
+      "set_id": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          254
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          254,
+          1
+        ]
+      ],
+      "order_id": 2,
+      "order": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "undirected_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "directed_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "up_direction_angle": 3.5323232415220382,
+      "rotation_angle": 4.321658392452445,
+      "orientation_id_within_plane_path": 1
+    }
+  ]
+}

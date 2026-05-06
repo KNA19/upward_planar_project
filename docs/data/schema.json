@@ -1,117 +1,75 @@
 {
-  "title": "Upward Planar Straight-Line Embedding Dataset Schema",
-  "description": "Schema and field explanation for the UPSE dataset generated over representative point sets of small order types.",
+  "title": "Upward Planar Straight-Line Embedding Witness Dataset Schema",
+  "description": "Schema and field explanation for the full witness dataset generated over representative point sets of small order types.",
   "scope": {
-    "n_values": [3, 4, 5, 6, 7],
+    "n_values": [3, 4, 5, 6, 7, 8, 9, 10],
     "graph_type": "Directed paths",
     "embedding_type": "Planar straight-line embeddings on fixed point sets",
     "upwardness_model": "Upwardness is considered up to rotation of the coordinate system.",
-    "point_set_source": "Representative point sets from small order-type data.",
-    "path_reversal_policy": "Undirected path orders are stored once up to reversal."
+    "point_set_source": "Representative point sets from Oswin Aichholzer's small order-type database.",
+    "point_set_source_url": "http://www.ist.tugraz.at/staff/aichholzer/research/rp/triangulations/ordertypes//",
+    "dataset_directory": "outputs_witness"
   },
   "dataset_file": {
-    "description": "Each nX_upward.json file contains the full dataset for one value of n.",
+    "description": "Each nX_witness.json file contains the full witness dataset for one value of n.",
     "fields": {
       "n": {
         "type": "integer",
         "description": "Number of points in each representative point set."
       },
-      "source_file": {
-        "type": "string",
-        "description": "Path or name of the order-type source file used to generate the dataset."
-      },
       "bits": {
         "type": "integer",
-        "description": "Bit width of the source order-type file, usually 8 for n <= 8."
+        "description": "Bit width of the source order-type file."
       },
       "cycle": {
         "type": "boolean",
-        "description": "False for path mode. True only if cycle mode is intentionally used."
+        "description": "False for directed path mode."
       },
-      "algorithm": {
+      "dataset_type": {
         "type": "string",
-        "description": "Short label describing the dataset generation algorithm."
+        "description": "Short label describing the generated witness dataset."
       },
-      "path_model": {
+      "orientation_model": {
         "type": "string",
-        "description": "Description of how path embeddings are enumerated. In the Chapter 6-aligned dataset, this is undirected plane paths, one representative up to reversal."
+        "description": "Description of the required orientation patterns."
       },
-      "num_sets": {
+      "total_required_orientations": {
         "type": "integer",
-        "description": "Number of representative point sets included in the file."
+        "description": "Number of required direction patterns, equal to 2^(n-1) for path mode."
       },
-      "sets": {
+      "total_found_orientations": {
+        "type": "integer",
+        "description": "Number of required direction patterns for which a witness was found."
+      },
+      "complete": {
+        "type": "boolean",
+        "description": "True when all required orientation patterns have witnesses."
+      },
+      "required_orientations": {
+        "type": "array of strings",
+        "description": "All required direction strings for this value of n."
+      },
+      "missing_orientations": {
+        "type": "array of strings",
+        "description": "Required direction strings without a witness, empty when complete is true."
+      },
+      "search_statistics": {
+        "type": "object",
+        "description": "Counts describing how many sets and path orders were checked."
+      },
+      "witnesses": {
         "type": "array",
-        "description": "List of point-set records.",
-        "items": "set_record"
+        "description": "Explicit upward planar straight-line witnesses.",
+        "items": "witness_record"
       }
     }
   },
-  "set_record": {
-    "description": "A record for one representative point set.",
-    "fields": {
-      "set_id": {
-        "type": "integer",
-        "description": "Index of the representative point set within the dataset file."
-      },
-      "points": {
-        "type": "array",
-        "description": "List of point coordinates. The index of a point is its position in this list.",
-        "example": [
-          [0, 0],
-          [1, 2],
-          [3, 1]
-        ]
-      },
-      "num_plane_undirected_paths": {
-        "type": "integer",
-        "description": "Number of undirected plane path embeddings for this point set, counted once up to reversal."
-      },
-      "total_upward_orientations": {
-        "type": "integer",
-        "description": "Total number of upward orientations over all stored plane paths for this point set."
-      },
-      "plane_paths": {
-        "type": "array",
-        "description": "List of undirected plane path embeddings on this point set.",
-        "items": "plane_path_record"
-      }
-    }
-  },
-  "plane_path_record": {
-    "description": "A record for one undirected plane path embedding.",
-    "fields": {
-      "path_id": {
-        "type": "integer",
-        "description": "Identifier of the plane path within the selected point set."
-      },
-      "order_id": {
-        "type": "integer or omitted",
-        "description": "Identifier of the generated path order, if stored by the dataset builder."
-      },
-      "order": {
-        "type": "array of integers",
-        "description": "Point indices along the undirected path.",
-        "example": [0, 2, 1, 3],
-        "interpretation": "The example order [0, 2, 1, 3] means the path visits point 0, then point 2, then point 1, then point 3."
-      },
-      "upward_count": {
-        "type": "integer",
-        "description": "Number of upward orientations found for this plane path."
-      },
-      "upward_orientations": {
-        "type": "array",
-        "description": "List of directed orientations of this path that become upward after rotation of the coordinate system.",
-        "items": "upward_orientation_record"
-      }
-    }
-  },
-  "upward_orientation_record": {
-    "description": "A record for one upward orientation of a selected plane path.",
+  "witness_record": {
+    "description": "A record for one upward planar straight-line embedding witness.",
     "fields": {
       "orientation_id": {
         "type": "integer",
-        "description": "Identifier of the upward orientation within the selected plane path."
+        "description": "Identifier of the required orientation pattern."
       },
       "dirs": {
         "type": "string",
@@ -119,8 +77,31 @@
         "symbols": {
           "+": "The i-th edge is directed from order[i] to order[i+1].",
           "-": "The i-th edge is directed from order[i+1] to order[i]."
-        },
-        "example": "+--"
+        }
+      },
+      "set_id": {
+        "type": "integer",
+        "description": "Index of the representative point set within the source order-type data."
+      },
+      "points": {
+        "type": "array",
+        "description": "List of point coordinates. The index of a point is its position in this list."
+      },
+      "order_id": {
+        "type": "integer",
+        "description": "Identifier of the path order checked during generation."
+      },
+      "order": {
+        "type": "array of integers",
+        "description": "Point indices along the witness path."
+      },
+      "undirected_edges": {
+        "type": "array",
+        "description": "Undirected path edges as point-index pairs."
+      },
+      "directed_edges": {
+        "type": "array",
+        "description": "Directed witness edges as [tail, head] pairs."
       },
       "up_direction_angle": {
         "type": "number",
@@ -130,64 +111,17 @@
       "rotation_angle": {
         "type": "number",
         "unit": "radians",
-        "description": "A witness rotation angle. Rotating the drawing by this angle displays the selected orientation as upward."
-      }
-    }
-  },
-  "summary_file": {
-    "description": "Each nX_summary.json file contains compact metadata and counts for one value of n.",
-    "fields": {
-      "n": {
+        "description": "A witness rotation angle. Rotating the drawing by this angle displays the witness as upward."
+      },
+      "orientation_id_within_plane_path": {
         "type": "integer",
-        "description": "Number of points in each representative point set."
-      },
-      "status": {
-        "type": "string",
-        "description": "Completion status of the dataset for this value of n."
-      },
-      "source_dataset_file": {
-        "type": "string",
-        "description": "Name of the corresponding full dataset JSON file."
-      },
-      "source_dataset_size_mb": {
-        "type": "number",
-        "description": "Approximate file size of the full dataset in megabytes."
-      },
-      "num_sets": {
-        "type": "integer",
-        "description": "Number of representative point sets."
-      },
-      "cycle": {
-        "type": "boolean",
-        "description": "False for path mode."
-      },
-      "algorithm": {
-        "type": "string",
-        "description": "Algorithm label."
-      },
-      "path_model": {
-        "type": "string",
-        "description": "Path enumeration model."
-      },
-      "total_plane_undirected_paths": {
-        "type": "integer",
-        "description": "Total number of undirected plane path embeddings over all point sets."
-      },
-      "total_upward_orientations": {
-        "type": "integer",
-        "description": "Total number of upward orientations over all stored plane paths."
-      },
-      "sets": {
-        "type": "array",
-        "description": "Compact per-set counts."
+        "description": "Identifier of the same orientation within the discovered plane path."
       }
     }
   },
   "interpretation_notes": {
     "fixed_coordinates": "The stored coordinates are the original representative point-set coordinates.",
-    "rotated_witness_view": "A selected upward orientation may not look upward in the original coordinate view. Use rotation_angle to display a witness upward drawing.",
-    "path_order_reversal": "The undirected path order and its reverse represent the same embedded path; only one representative is stored.",
-    "plane_path_condition": "Only path orders that pass the straight-line planarity test are stored.",
-    "direction_string": "For an order of length n, dirs has length n - 1 in path mode. Character dirs[i] gives the direction of the edge between order[i] and order[i+1]."
+    "rotated_witness_view": "Use rotation_angle to display the selected witness as an upward drawing.",
+    "direction_string": "For an order of length n, dirs has length n - 1 in path mode."
   }
 }
